@@ -12,27 +12,25 @@ import com.skilldistillery.trails.repositories.TrailRepository;
 public class TrailServiceImpl implements TrailService {
 	
 	@Autowired
-	private TrailRepository trailsRepo;
+	private TrailRepository trailRepo;
 
 	@Override
 	public List<Trail> listAllTrails() {
-		return trailsRepo.findAll();
+		return trailRepo.findAll();
 	}
 
 	@Override
-	public Trail getTrails(int id) {
-		
-		return null;
+	public Trail getTrailById(int id) {
+		return trailRepo.getTrailById(id);
 	}
 
 	@Override
-	public Trail create(Trail trails) {
-		// TODO Auto-generated method stub
-		return null;
+	public Trail create(Trail trail) {
+		return trailRepo.saveAndFlush(trail);
 	}
 
 	@Override
-	public Trail update(int id, Trail trails) {
+	public Trail update(int id, Trail trail) {
 		// TODO Auto-generated method stub
 		return null;
 	}

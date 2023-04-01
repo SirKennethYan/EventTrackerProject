@@ -1,23 +1,33 @@
 package com.skilldistillery.trails.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Location {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String city;
 
-	// ------ Methods ------- //
-	
+// ------ Mapping ------- //
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "location")
+	private List<Trail> trails;
+
+// ------ Methods ------- //
+
 	public Location() {
 		super();
 	}
@@ -36,6 +46,14 @@ public class Location {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public List<Trail> getTrails() {
+		return trails;
+	}
+
+	public void setTrails(List<Trail> trails) {
+		this.trails = trails;
 	}
 
 	@Override
@@ -59,5 +77,5 @@ public class Location {
 	public String toString() {
 		return "Location [id=" + id + ", city=" + city + "]";
 	}
-	
+
 }

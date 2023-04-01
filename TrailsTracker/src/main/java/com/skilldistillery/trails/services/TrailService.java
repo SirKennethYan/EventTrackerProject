@@ -7,9 +7,9 @@ import com.skilldistillery.trails.entities.Trail;
 public interface TrailService {
 	
 	List<Trail> listAllTrails();
-	Trail getTrails(int id);
-	Trail create(Trail trails);
-	Trail update(int id, Trail trails);
+	Trail getTrailById(int id);
+	Trail create(Trail trail);
+	Trail update(int id, Trail trail);
 	boolean deleteById(int id);
 	
 }
