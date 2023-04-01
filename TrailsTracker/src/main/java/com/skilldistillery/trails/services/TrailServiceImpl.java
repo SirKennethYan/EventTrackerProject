@@ -50,8 +50,13 @@ public class TrailServiceImpl implements TrailService {
 
 	@Override
 	public boolean deleteById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean deleted = false;
+		Optional<Trail> trailOpt = trailRepo.findById(id);
+		if (trailOpt.isPresent()) {
+			trailRepo.delete(trailOpt.get());
+			deleted = true;
+		}
+		return deleted;
 	}
 
 }
