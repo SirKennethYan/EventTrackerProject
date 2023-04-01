@@ -1,6 +1,7 @@
 package com.skilldistillery.trails.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,19 @@ public class TrailServiceImpl implements TrailService {
 
 	@Override
 	public Trail update(int id, Trail trail) {
-		// TODO Auto-generated method stub
+		Optional<Trail> trailOpt = trailRepo.findById(id);
+		if (trailOpt.isPresent()) {
+			Trail updatedTrail = trailOpt.get();
+			updatedTrail.setName(trail.getName());
+			updatedTrail.setImageUrl(trail.getImageUrl());
+			updatedTrail.setDescription(trail.getDescription());
+			updatedTrail.setTrailLength(trail.getTrailLength());
+			updatedTrail.setElevationGain(trail.getElevationGain());
+			updatedTrail.setRouteType(trail.getRouteType());
+			updatedTrail.setDateHiked(trail.getDateHiked());
+			trailRepo.saveAndFlush(updatedTrail);
+			return updatedTrail;
+		}
 		return null;
 	}
 

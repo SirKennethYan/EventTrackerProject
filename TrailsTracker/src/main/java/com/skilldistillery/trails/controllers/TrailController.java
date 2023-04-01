@@ -2,9 +2,15 @@ package com.skilldistillery.trails.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,23 +20,50 @@ import com.skilldistillery.trails.services.TrailService;
 @RestController
 @RequestMapping("api")
 public class TrailController {
-	
+
 	@Autowired
 	private TrailService trailService;
-	
+
 	@GetMapping("showall")
-	public List<Trail> listAllTrails(){
+	public List<Trail> listAllTrails() {
 		return trailService.listAllTrails();
 	}
-	
+
 	@GetMapping("showtrailbyid")
-	public Trail getTrailById(int id) {
+	public Trail getTrailById(@PathVariable int id) {
 		return trailService.getTrailById(id);
 	}
-	
-	@PostMapping("create")
-	public Trail create(Trail trail) {
-		return trailService.create(trail);
+
+	@PostMapping("createtrail")
+	public Trail createTrail(@RequestBody Trail trail, HttpServletRequest req, HttpServletResponse res) {
+		try {
+			trail = trailService.create(trail);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(trail.getId());
+			res.setHeader("Location", url.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			trail = null;
+		}
+		return trail;
+	}
+
+	@PutMapping("updatetrail/{id}")
+	public Trail updateTrail(@PathVariable int id, @RequestBody Trail trail, HttpServletRequest req,
+			HttpServletResponse res) {
+		try {
+			trail = trailService.update(id, trail);
+			if (trail == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			trail = null;
+		}
+		return trail;
 	}
 
 }
