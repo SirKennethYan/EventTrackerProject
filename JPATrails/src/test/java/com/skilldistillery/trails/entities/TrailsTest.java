@@ -45,7 +45,7 @@ class TrailsTest {
 	@Test
 	void test_Trails_entity_mapping() {
 		assertNotNull(trails);
-		assertEquals("Contra Loma Loop", trails.getName());
+		assertEquals("Contra Loma Shore Loop", trails.getName());
 	}
 
 }
