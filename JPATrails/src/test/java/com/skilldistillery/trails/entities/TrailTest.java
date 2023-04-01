@@ -14,11 +14,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TrailsTest {
+class TrailTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Trails trails;
+	private Trail trail;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,19 +33,19 @@ class TrailsTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		trails = em.find(Trails.class, 1);
+		trail = em.find(Trail.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		trails = null;
+		trail = null;
 	}
 
 	@Test
 	void test_Trails_entity_mapping() {
-		assertNotNull(trails);
-		assertEquals("Contra Loma Shore Loop", trails.getName());
+		assertNotNull(trail);
+		assertEquals("Contra Loma Shore Loop", trail.getName());
 	}
 
 }

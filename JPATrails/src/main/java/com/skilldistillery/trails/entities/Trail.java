@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Trails {
+public class Trail {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Trails {
 	
 // ------ Methods ------- //
 
-	public Trails() {
+	public Trail() {
 		super();
 	}
 
@@ -51,7 +51,7 @@ public class Trails {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Trails other = (Trails) obj;
+		Trail other = (Trail) obj;
 		return id == other.id;
 	}
 

@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.trails.entities.Trails;
-import com.skilldistillery.trails.services.TrailsService;
+import com.skilldistillery.trails.entities.Location;
+import com.skilldistillery.trails.services.LocationService;
 
 @RestController
 @RequestMapping("api")
-public class TrailsController {
+public class LocationController {
 	
 	@Autowired
-	private TrailsService trailsService;
+	private LocationService locatService;
 	
-	@GetMapping("traillist")
-	public List<Trails> getTrailList(){
-		return trailsService.listAllTrails();
+	@GetMapping("locationslist")
+	public List<Location> getTrailList(){
+		return locatService.listAllLocations();
 	}
 
 }
