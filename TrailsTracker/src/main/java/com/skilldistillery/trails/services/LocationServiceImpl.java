@@ -1,21 +1,19 @@
 package com.skilldistillery.trails.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.trails.entities.Location;
-import com.skilldistillery.trails.entities.Trail;
 import com.skilldistillery.trails.repositories.LocationRepository;
-import com.skilldistillery.trails.repositories.TrailRepository;
 
 @Service
 public class LocationServiceImpl implements LocationService {
-	
+
 	@Autowired
 	private LocationRepository locatRepo;
-
 
 	@Override
 	public List<Location> listAllLocations() {
@@ -23,27 +21,36 @@ public class LocationServiceImpl implements LocationService {
 	}
 
 	@Override
-	public Location getLocations(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Location getLocationById(int id) {
+		return locatRepo.getLocationById(id);
 	}
 
 	@Override
 	public Location create(Location location) {
-		// TODO Auto-generated method stub
-		return null;
+		return locatRepo.saveAndFlush(location);
 	}
 
 	@Override
 	public Location update(int id, Location location) {
-		// TODO Auto-generated method stub
+		Optional<Location> locationOpt = locatRepo.findById(id);
+		if (locationOpt.isPresent()) {
+			Location updatedLocation = locationOpt.get();
+			updatedLocation.setCity(location.getCity());	
+			locatRepo.saveAndFlush(updatedLocation);
+			return updatedLocation;
+		}
 		return null;
 	}
 
 	@Override
 	public boolean deleteById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean deleted = false;
+		Optional<Location> locationOpt = locatRepo.findById(id);
+		if (locationOpt.isPresent()) {
+			locatRepo.delete(locationOpt.get());
+			deleted = true;
+		}
+		return deleted;
 	}
-	
+
 }

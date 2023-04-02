@@ -30,7 +30,7 @@ public class TrailController {
 		return trailService.listAllTrails();
 	}
 
-	@GetMapping("showtrailbyid")
+	@GetMapping("showtrailbyid/{id}")
 	public Trail getTrailById(@PathVariable int id) {
 		return trailService.getTrailById(id);
 	}
