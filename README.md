@@ -6,5 +6,5 @@
 
 <h3 align="left">Project Take Aways:</h3>
 <h3 align="left">Throughout this project, I learned the importance of proper naming conventions for my classes, files, and variables. By taking the time to choose clear and descriptive names, I would have been able to write code that was more readable and understandable from the beginning. This is especially important because when I had to refactor rename my files, it caused errors to my JUnit tests and overall code in many files.
-
+<br>
 In addition to improving my naming conventions, this project gave me a deeper understanding of the structure and organization of Spring Data JPA. I found that writing CRUD (Create, Read, Update, Delete) methods was much simpler than in previous projects.</h3>
