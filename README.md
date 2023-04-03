@@ -7,3 +7,11 @@
 <h3 align="left">Project Take Aways:</h3>
 <h3 align="left">Throughout this project, I learned the importance of proper naming conventions for my classes, files, and variables. By taking the time to choose clear and descriptive names, I would have been able to write code that was more readable and understandable from the beginning. This is especially important because when I had to refactor rename my files, it caused errors to my JUnit tests and overall code in many files.</h3>
 <h3 align="left">In addition to improving my naming conventions, this project gave me a deeper understanding of the structure and organization of Spring Data JPA. I found that writing CRUD (Create, Read, Update, Delete) methods was much simpler than in previous projects.</h3>
+
+| HTTP Verb | URI                  | Request Body | Response Body |
+|-----------|----------------------|--------------|---------------|
+| GET       | `/api/trails`        |              | Collection of all trails in Database |collection** endpoint |
+| GET       | `/api/trails/1`      |              | Representation of Trail `1` |
+| POST      | `/api/trails`        | Representation of a new trail | | **
+| PUT       | `/api/trails/1`      | Representation of a new version of trail `1` |
+| DELETE    | `/api/trails/1`      |              |               |
