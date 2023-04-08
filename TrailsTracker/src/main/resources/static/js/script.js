@@ -61,18 +61,42 @@ function displayTrailList(trailList){
 	}
 }
 
+function createTrail(newTrail){
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', 'api/createtrail');
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState === 4){
+			if(xhr.status === 200 || xhr.readyState === 201){
+				let trail = JSON.parse(xhr.responseText);
+				displayTrailList(trail);
+			}
+			else{
+				displayError("Error creating trail: " + xhr.status);
+			}
+		}
+	};
+	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+	let newTrailJson = JSON.stringify(newTrail);
+	xhr.send(newTrailJson);
+}
 
-
-
-
-
-
-
-
-
-
-
-
+function updateTrail(trailId, updatedTrail){
+	let xhr = new XMLHttpRequest();
+	xhr.open('PUT', 'api/updatetrail' + trailId);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === 4){
+			if(xhr.status === 200 || xhr.status === 204){
+				displayTrailList(updatedTrail);
+			}
+			else{
+				displayError("Error updating trail: " + xhr.status);
+			}
+		}
+	};
+	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+	let updatedTrailJson = JSON.stringify(updatedTrail);
+	xhr.send(updatedTrailJson);
+}
 
 
 
