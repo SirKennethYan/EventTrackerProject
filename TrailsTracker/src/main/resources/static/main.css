@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+.trailsImgThumbNail{
+	width: 200px;
+}
+
+* {
+    /* Change your font family */
+    font-family: Helvetica;
+}
+
+.trail-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.trail-table thead tr {
+    background-color: #468802;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.trail-table th,
+.trail-table td {
+    padding: 12px 15px;
+}
+
+.trail-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.trail-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.trail-table tbody tr:last-of-type {
+    border-bottom: 5px solid #468802;
+}
+
+.trail-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.trail-table td {
+  padding: 12px 15px;
+  padding: 12px 15px;
+  border-right: 1px solid #d3d3d3; 
+}
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trail Tracker</title>
+<script type="text/javascript" src="js/script.js"></script>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<h1>Welcome to trail Tracker</h1>
+
+	<div id="trailListDiv">
+		<h2>Trail Names</h2>
+		<table class="trail-table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Trail Length</th>
+					<th>Elevation Gain</th>
+					<th>Route Type</th>
+					<th>Date Hiked</th>
+					<th>Image URL</th>
+				</tr>
+			</thead>
+			<tbody id="trailListTbody"></tbody>
+		</table>
+	</div>
+
+	<div id="logTrailDiv">
+		<h2>Log a Trail</h2>
+		<form id="logTrailForm">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name"><br>
+			
+			<label for="description">Description:</label>
+			<textarea id="description" name="description"></textarea><br>
+						
+			<label for="trailLength">Trail Length:</label>
+			<input type="text" id="trailLength" name="trailLength"><br>
+									
+			<label for="elevationGain">Elevation Gain:</label>
+			<input type="text" id="elevationGain" name="elevationGain"><br>
+												
+			<label for="routeType">Route Type:</label>
+			<select id="routeType" name="routeType">
+				<option value="Loop">Loop</option>
+				<option value="Out and Back">Out and Back</option>
+				<option value="Point to Point">Point to Point</option>
+			</select><br>	
+																		
+			<label for="dateHiked">Date Hiked:</label>
+			<input type="text" id="dateHiked" name="dateHiked"><br>
+			
+			<label for="imageUrl">Image URL:</label>
+			<input type="text" id="imageUrl" name="imageUrl"><br>
+			
+			<input type="button" value="Create Trail" onclick="createTrail()">
+		</form>
+	</div>
+
+
+</body>
+</html>
