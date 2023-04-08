@@ -3,9 +3,89 @@ window.addEventListener('load', function(e){
 	init();
 })
 
-function init(){
+/*function init(){
 	console.log('in init');
 	loadAllTrails();
+}*/
+
+function init() {
+	loadAllTrails();
+	
+	document.trailForm.lookup.addEventListener('click', function(e) {
+		e.preventDefault();
+		let trailId = document.trailForm.trailId.value;
+		console.log(trailId);
+		if (!isNaN(trailId) && trailId > 0) {
+			getTrail(trailId);
+		}
+	});
+	
+	document.logTrailForm.addTrailButton.addEventListener('click', function(evt){
+		evt.preventDefault();
+		let form = document.logTrailForm;
+		let trail = {
+			name: form.name.value,
+			description: form.description.value,
+			trailLength: form.trailLength.value,
+			elevationGain: form.elevationGain.value,
+			routeType: form.routeType.value,
+			imageUrl: form.imageUrl.value,
+			location: {
+       				 	id: 1,
+        				city: "Antioch"}
+		};
+		console.log(trail);
+		createTrail(trail);
+	});
+}
+
+function getTrail(trailId) {
+	let xhr = new XMLHttpRequest();
+	xhr.open('GET', 'api/trail/' + trailId);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === xhr.DONE) {
+			if (xhr.status === 200) {
+				let trailJson = xhr.responseText;
+				let trail = JSON.parse(trailJson);
+				displayTrail(trail);			
+			}
+			else {
+				console.error(xhr.status + ":" + xhr.responseText);
+			}
+
+		}
+
+	};
+	xhr.send();
+}
+
+function displayTrail(){
+	let dataDiv = document.getElementById('trailData');
+	dataDiv.textContent = '';
+	
+	let h1 = document.createElement('h1');
+	h1.textContent = trail.name;
+	dataDiv.appendChild(h1);
+
+	let blockquote = document.createElement('blockquote');
+	blockquote.textContent = trail.description;
+	dataDiv.appendChild(blockquote);
+
+	let ul = document.createElement('ul');
+
+	let lengthLi = document.createElement('li');
+	lengthLi.textContent = "Trail Length: " + trail.length;
+	ul.appendChild(lengthLi);
+
+	let yearLi = document.createElement('li');
+	yearLi.textContent = "Elevation Gain: " + trail.releaseYear;
+	ul.appendChild(yearLi);
+
+	let routeLi = document.createElement('li');
+	lengthLi.textContent = "Route Type: " + fitraillm.length + " minutes";
+	ul.appendChild(lengthLi)
+
+	dataDiv.appendChild(ul);
 	
 }
 
@@ -63,20 +143,23 @@ function displayTrailList(trailList){
 
 function createTrail(newTrail){
 	let xhr = new XMLHttpRequest();
-	xhr.open('POST', 'api/createtrail');
+	xhr.open('POST', 'api/createtrail', true);
+	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
 	xhr.onreadystatechange = function(){
 		if (xhr.readyState === 4){
-			if(xhr.status === 200 || xhr.readyState === 201){
+			console.log('hellllllllllllllo')
+			if(xhr.status === 200 || xhr.status === 201){
 				let trail = JSON.parse(xhr.responseText);
-				displayTrailList(trail);
+				console.log(trail);
+				loadAllTrails(); //Change later
 			}
 			else{
-				displayError("Error creating trail: " + xhr.status);
+				console.error(xhr.status + ":" + xhr.responseText);
 			}
 		}
 	};
-	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
 	let newTrailJson = JSON.stringify(newTrail);
+	console.log(newTrailJson);
 	xhr.send(newTrailJson);
 }
 
@@ -89,7 +172,7 @@ function updateTrail(trailId, updatedTrail){
 				displayTrailList(updatedTrail);
 			}
 			else{
-				displayError("Error updating trail: " + xhr.status);
+				console.error(xhr.status + ":" + xhr.responseText);
 			}
 		}
 	};
