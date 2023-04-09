@@ -5,7 +5,7 @@
 	 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
     <!-- begin entities --> 
-    <class>com.skilldistillery.trails.entities.Trails</class>
+    <class>com.skilldistillery.trails.entities.Trail</class>
     <class>com.skilldistillery.trails.entities.Location</class>
 
     <!-- end entities -->  

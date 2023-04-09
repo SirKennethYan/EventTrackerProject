@@ -3,11 +3,6 @@ window.addEventListener('load', function(e){
 	init();
 })
 
-/*function init(){
-	console.log('in init');
-	loadAllTrails();
-}*/
-
 function init() {
 	loadAllTrails();
 	
@@ -37,6 +32,7 @@ function init() {
 		console.log(trail);
 		createTrail(trail);
 	});
+
 }
 
 function getTrail(trailId) {
@@ -59,7 +55,7 @@ function getTrail(trailId) {
 	xhr.send();
 }
 
-function displayTrail(){
+function displayTrail(trail){
 	let dataDiv = document.getElementById('trailData');
 	dataDiv.textContent = '';
 	
@@ -77,20 +73,23 @@ function displayTrail(){
 	lengthLi.textContent = "Trail Length: " + trail.length;
 	ul.appendChild(lengthLi);
 
-	let yearLi = document.createElement('li');
-	yearLi.textContent = "Elevation Gain: " + trail.releaseYear;
-	ul.appendChild(yearLi);
+	let elevationGainLi = document.createElement('li');
+	elevationGainLi.textContent = "Elevation Gain: " + trail.elevationGain;
+	ul.appendChild(elevationGainLi);
 
-	let routeLi = document.createElement('li');
-	lengthLi.textContent = "Route Type: " + fitraillm.length + " minutes";
-	ul.appendChild(lengthLi)
+	let routeTypeLi = document.createElement('li');
+	routeTypeLi.textContent = "Route Type: " + trail.routeType;
+	ul.appendChild(routeTypeLi);
+	
+	let imageUrlLi = document.createElement('li');
+	imageUrlLi.textContent = "Route Type: " + trail.imageUrl;
+	ul.appendChild(imageUrlLi)
 
 	dataDiv.appendChild(ul);
 	
 }
 
 function loadAllTrails(){
-	//XHR stuff
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'api/showall');
 	xhr.onreadystatechange = function(){
@@ -105,7 +104,6 @@ function loadAllTrails(){
 }
 
 function displayTrailList(trailList){
-	//DOM stuff
 	let tbody = document.getElementById('trailListTbody');
 	tbody.textContent = '';
 	for (let trails of trailList){
@@ -128,14 +126,11 @@ function displayTrailList(trailList){
 		tr.appendChild(td);		
 		td = document.createElement('td');
 		td.textContent = trails.routeType;
-		tr.appendChild(td);		
-		td = document.createElement('td');
-		td.textContent = trails.dateHiked;
-		tr.appendChild(td);		
+		tr.appendChild(td);					
 		td = document.createElement('td');
 		let img = document.createElement('img');
 		img.setAttribute('src', trails.imageUrl);
-		img.classList.add('trailsImgThumbNail');
+		img.classList.add('trailsImgThumbNail');		
 		td.appendChild(img);
 		tr.appendChild(td);		
 	}
@@ -144,14 +139,13 @@ function displayTrailList(trailList){
 function createTrail(newTrail){
 	let xhr = new XMLHttpRequest();
 	xhr.open('POST', 'api/createtrail', true);
-	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+	xhr.setRequestHeader("Content-type", "application/json");
 	xhr.onreadystatechange = function(){
 		if (xhr.readyState === 4){
-			console.log('hellllllllllllllo')
 			if(xhr.status === 200 || xhr.status === 201){
 				let trail = JSON.parse(xhr.responseText);
 				console.log(trail);
-				loadAllTrails(); //Change later
+				displayTrail(); //Change later
 			}
 			else{
 				console.error(xhr.status + ":" + xhr.responseText);
@@ -163,25 +157,64 @@ function createTrail(newTrail){
 	xhr.send(newTrailJson);
 }
 
-function updateTrail(trailId, updatedTrail){
+document.editTrailForm.updateTrailButton.addEventListener('click', function(e) {
+		e.preventDefault();
+		let form = document.editTrailForm;
+
+		let updatedTrail = {
+			name: form.name.value,
+			description: form.description.value,
+			trailLength: form.trailLength.value,
+			elevationGain: form.elevationGain.value,
+			routeType: form.routeType.value,
+			imageUrl: form.imageUrl.value
+		};
+
+		let trailId = form.trailId.value;
+
+		console.log(trailId + updateTrail);
+		updateTrail(updatedTrail, trailId);
+	});
+	
+function updateTrail(updatedTrail, trailId) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('PUT', 'api/updatetrail' + trailId);
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4){
-			if(xhr.status === 200 || xhr.status === 204){
-				displayTrailList(updatedTrail);
+	xhr.open('PUT', 'api/updatetrail/' + trailId, true);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200 || xhr.status === 201) {
+				let updatedTrailJson = JSON.parse(xhr.responseText);
+				console.log(updatedTrailJson);
+				displayTrailList(updatedTrailJson);
 			}
-			else{
+			else {
 				console.error(xhr.status + ":" + xhr.responseText);
 			}
 		}
-	};
-	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+	}
+	xhr.setRequestHeader("Content-type", "application/json");
 	let updatedTrailJson = JSON.stringify(updatedTrail);
 	xhr.send(updatedTrailJson);
 }
 
-
-
-
-
+document.deleteTrailForm.deleteTrail.addEventListener('click', function(e){
+	e.preventDefault();
+	let form = document.deleteTrailForm;
+	let trailId = form.trailId.value;
+	deleteTrail(trailId);	
+});
+	
+function deleteTrail(trailId) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('DELETE', 'api/deletetrail/' + trailId, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200 || xhr.status === 204) {
+        console.log('Trail deleted successfully');
+      }
+      else {
+        console.error(xhr.status + ":" + xhr.responseText);
+      }
+    }
+  }
+  xhr.send();
+}
