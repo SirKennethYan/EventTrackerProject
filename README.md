@@ -12,6 +12,6 @@
 |-----------|----------------------|--------------|---------------|
 | GET       | `/api/trails`        |              | Collection of all trails in Database |collection** endpoint |
 | GET       | `/api/trails/1`      |              | Representation of Trail `1` |
-| POST      | `/api/trails`        | Representation of a new trail | | **
-| PUT       | `/api/trails/1`      | Representation of a new version of trail `1` |
-| DELETE    | `/api/trails/1`      |              |               |
+| POST      | `/api/trails`        |              | Representation of a new trail `2`| **
+| PUT       | `/api/trails/1`      |              | Representation of a new version of trail `2a`|
+| DELETE    | `/api/trails/1`      |              | Deletion of trail `2a`|
