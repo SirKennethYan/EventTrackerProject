@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/tree.svg" type="image/png">
 <meta charset="UTF-8">
 <title>Trail Tracker</title>
 <script type="text/javascript" src="js/script.js"></script>
 <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<h1>Welcome to trail Tracker</h1>
+	<header>
+		<h1>Welcome to Trail Tracker</h1>
+	</header>
 
-  <form name="trailForm">
-    <input type="number" name="trailId">
-    <button name="lookup">Get Trail by Id</button>
-  </form>
-  <div id="output">
-    <div id="trailData"></div>
-  </div>
+
+	<div>
+		<h2>Trail Names</h2>
+	</div>
+
+	<div id="table-forms">
+		<form name="trailForm">
+			<input type="number" name="trailId">
+			<button name="lookup">Get Trail by Id</button>
+		</form>
+		<form name="deleteTrailForm">
+			<input type="number" name="trailId">
+			<button name="deleteTrail">Delete Trail</button>
+		</form>
+	</div>
+	<div id="output">
+		<div id="trailData"></div>
+	</div>
 
 	<div id="trailListDiv">
-		<h2>Trail Names</h2>
 		<table class="trail-table">
 			<thead>
 				<tr>
@@ -28,82 +41,68 @@
 					<th>Trail Length</th>
 					<th>Elevation Gain</th>
 					<th>Route Type</th>
-					<th>Image URL</th>
+					<th>Image</th>
 				</tr>
 			</thead>
 			<tbody id="trailListTbody"></tbody>
 		</table>
 	</div>
-	
+
 	<div id="logTrailDiv">
 		<h2>Log a Trail</h2>
-		<form name="logTrailForm">
-			<label for="name">Name:</label>
-			<input type="text" id="name" name="name"><br>
-			
-			<label for="description">Description:</label>
-			<textarea id="description" name="description"></textarea><br>
-						
-			<label for="trailLength">Trail Length:</label>
-			<input type="text" id="trailLength" name="trailLength"><br>
-									
-			<label for="elevationGain">Elevation Gain:</label>
-			<input type="text" id="elevationGain" name="elevationGain"><br>
-												
-			<label for="routeType">Route Type:</label>
-			<select id="routeType" name="routeType">
+		<form name="logTrailForm" class="log-trail-form">
+			<label for="name">Name:</label> <input type="text" id="name"
+				name="name"><br> <label for="description">Description:</label>
+			<textarea id="description" name="description"></textarea>
+			<br> <label for="trailLength">Trail Length:</label> <input
+				type="text" id="trailLength" name="trailLength"><br> <label
+				for="elevationGain">Elevation Gain:</label> <input type="text"
+				id="elevationGain" name="elevationGain"><br> <label
+				for="routeType">Route Type:</label> <select id="routeType"
+				name="routeType">
 				<option value="Loop">Loop</option>
 				<option value="Out and Back">Out and Back</option>
 				<option value="Point to Point">Point to Point</option>
-			</select><br>	
-																	
-			<label for="imageUrl">Image URL:</label>
-			<input type="text" id="imageUrl" name="imageUrl"><br>
-			
+			</select><br> <label for="imageUrl">Image URL:</label> <input type="text"
+				id="imageUrl" name="imageUrl"><br>
+
 			<button name="addTrailButton">Log a Trail</button>
 		</form>
 	</div>
-	
+
 	<div id="editTrailDiv">
 		<h2>Edit a Trail</h2>
-		<form name="editTrailForm">
-		
-			<label for="trailId">Trail ID: </label>
-			<input type="number" name="trailId"><br>
-	
-			<label for="updateName">Edit Name:</label>
-			<input type="text" id="updateName" name="updateName"><br>
-			
+		<form name="editTrailForm" class="edit-trail-form">
+
+			<label for="trailId">Trail ID: </label> <input type="number"
+				name="trailId"><br> <label for="updateName">Edit
+				Name:</label> <input type="text" id="updateName" name="updateName"><br>
+
 			<label for="updateDescription">Edit Description:</label>
-			<textarea id="updateDescription" name="updateDescription"></textarea><br>
-						
-			<label for="updateTrailLength">Edit Trail Length:</label>
-			<input type="text" id="updateTrailLength" name="updateTrailLength"><br>
-									
-			<label for="updateElevationGain">Edit Elevation Gain:</label>
-			<input type="text" id="updateElevationGain" name="updateElevationGain"><br>
-												
-			<label for="updateRouteType">Change Route Type:</label>
-			<select id="updateRouteType" name="updateRouteType">
+			<textarea id="updateDescription" name="updateDescription"></textarea>
+			<br> <label for="updateTrailLength">Edit Trail Length:</label> <input
+				type="text" id="updateTrailLength" name="updateTrailLength"><br>
+
+			<label for="updateElevationGain">Edit Elevation Gain:</label> <input
+				type="text" id="updateElevationGain" name="updateElevationGain"><br>
+
+			<label for="updateRouteType">Change Route Type:</label> <select
+				id="updateRouteType" name="updateRouteType">
 				<option value="Loop">Loop</option>
 				<option value="Out and Back">Out and Back</option>
 				<option value="Point to Point">Point to Point</option>
-			</select><br>																		
-			
-			<label for="imageUrl">Change Image URL:</label>
-			<input type="text" id="imageUrl" name="imageUrl"><br>
-			
+			</select><br> <label for="imageUrl">Change Image URL:</label> <input
+				type="text" id="imageUrl" name="imageUrl"><br>
+
 			<button name="updateTrailButton">Edit Trail</button>
 		</form>
 	</div>
-	
-	<div>
-		<form name="deleteTrailForm">
-		<input type="number" name="trailId">
-		<button name="deleteTrail">Delete Trail</button>
-		</form>
-	</div>
 
+	<div>
+		<footer>
+			<p>Copyright © 2023 Kenny Yan</p>
+		</footer>
+	</div>
 
 </body>
 </html>
