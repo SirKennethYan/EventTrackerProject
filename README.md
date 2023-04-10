@@ -11,7 +11,7 @@
 | HTTP Verb | URI                  | Request Body | Response Body |
 |-----------|----------------------|--------------|---------------|
 | GET       | `/api/trails`        |              | Collection of all trails in Database |collection** endpoint |
-| GET       | `/api/trails/1`      |              | Representation of Trail `1` |
-| POST      | `/api/trails`        |              | Representation of a new trail `2`| **
-| PUT       | `/api/trails/1`      |              | Representation of a new version of trail `2a`|
-| DELETE    | `/api/trails/1`      |              | Deletion of trail `2a`|
+| GET       | `/api/trails/{id}`      |              | Representation of Trail `{id}` |
+| POST      | `/api/trails`        |              | Representation of a new trail `{id}`| **
+| PUT       | `/api/trails/{id}`      |              | Representation of a new version of trail `{id}`|
+| DELETE    | `/api/trails/{id}`      |              | Deletion of trail `{id}`|
