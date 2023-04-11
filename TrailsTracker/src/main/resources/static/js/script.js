@@ -159,17 +159,17 @@ function createTrail(newTrail){
 	xhr.send(newTrailJson);
 }
 
-document.editTrailForm.updateTrailButton.addEventListener('onclick', function(e) {
+document.editTrailForm.updateTrailButton.addEventListener('click', function(e) {
 		e.preventDefault();
 		let form = document.editTrailForm;
 		console.log(form); //Debugging
 		let updatedTrail = {
-			name: form.name.value,
-			description: form.description.value,
-			trailLength: form.trailLength.value,
-			elevationGain: form.elevationGain.value,
-			routeType: form.routeType.value,
-			imageUrl: form.imageUrl.value
+			name: form.updateName.value,
+			description: form.updateDescription.value,
+			trailLength: form.updateTrailLength.value,
+			elevationGain: form.updateElevationGain.value,
+			routeType: form.updateRouteType.value,
+			imageUrl: form.updateImageUrl.value
 		};
 
 		let trailId = form.trailId.value;
@@ -187,14 +187,14 @@ function updateTrail(updatedTrail, trailId) {
 			if (xhr.status === 200 || xhr.status === 201) {
 				let updatedTrailJson = JSON.parse(xhr.responseText);
 				console.log(updatedTrailJson);
-				displayTrailList(updatedTrailJson);
+				loadAllTrails();
 			}
 			else {
 				console.error(xhr.status + ":" + xhr.responseText);
 			}
 		}
 	}
-	xhr.setRequestHeader("Content-type", "application/json");
+
 	let updatedTrailJson = JSON.stringify(updatedTrail);
 	xhr.send(updatedTrailJson);
 	console.log(updatedTrail, trailId); //Debugging
