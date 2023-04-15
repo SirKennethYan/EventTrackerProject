@@ -27,17 +27,17 @@ public class TrailController {
 	@Autowired
 	private TrailService trailService;
 
-	@GetMapping("showall")
+	@GetMapping("trails")
 	public List<Trail> listAllTrails() {
 		return trailService.listAllTrails();
 	}
 
-	@GetMapping("showtrailbyid/{id}")
+	@GetMapping("trails/{id}")
 	public Trail getTrailById(@PathVariable int id) {
 		return trailService.getTrailById(id);
 	}
 
-	@PostMapping("createtrail")
+	@PostMapping("trails")
 	public Trail createTrail(@RequestBody Trail trail, HttpServletRequest req, HttpServletResponse res) {
 		try {
 			trail = trailService.create(trail);
@@ -53,7 +53,7 @@ public class TrailController {
 		return trail;
 	}
 
-	@PutMapping("updatetrail/{id}")
+	@PutMapping("trails/{id}")
 	public Trail updateTrail(@PathVariable int id, @RequestBody Trail trail, HttpServletRequest req,
 			HttpServletResponse res) {
 		try {
@@ -70,7 +70,7 @@ public class TrailController {
 		return trail;
 	}
 	
-	@DeleteMapping("deletetrail/{id}")
+	@DeleteMapping("trails/{id}")
 	public void deleteTrail(@PathVariable Integer id, HttpServletResponse res) {
 		try {
 			if (trailService.deleteById(id)) {

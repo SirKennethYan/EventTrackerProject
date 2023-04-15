@@ -27,17 +27,17 @@ public class LocationController {
 	@Autowired
 	private LocationService locatService;
 	
-	@GetMapping("locationslist")
+	@GetMapping("locations")
 	public List<Location> getTrailList(){
 		return locatService.listAllLocations();
 	}
 	
-	@GetMapping("showlocationbyid/{id}")
+	@GetMapping("locations/{id}")
 	public Location getLocationById(@PathVariable int id) {
 		return locatService.getLocationById(id);
 	}
 	
-	@PostMapping("createLocation")
+	@PostMapping("locations")
 	public Location createTrail(@RequestBody Location location, HttpServletRequest req, HttpServletResponse res) {
 		try {
 			location = locatService.create(location);
@@ -53,7 +53,7 @@ public class LocationController {
 		return location;
 	}
 	
-	@PutMapping("updatelocation/{id}")
+	@PutMapping("locations/{id}")
 	public Location updateTrail(@PathVariable int id, @RequestBody Location location, HttpServletRequest req,
 			HttpServletResponse res) {
 		try {
@@ -70,7 +70,7 @@ public class LocationController {
 		return location;
 	}
 	
-	@DeleteMapping("deletelocation/{id}")
+	@DeleteMapping("locations/{id}")
 	public void deleteLocation(@PathVariable Integer id, HttpServletResponse res) {
 		try {
 			if (locatService.deleteById(id)) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrailTracker } from 'src/app/models/trail-tracker';
+import { TrailTracker } from 'src/app/models/trails';
 import { TrailTrackerService } from 'src/app/services/trail-tracker.service';
 
 @Component({

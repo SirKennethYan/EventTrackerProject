@@ -1,4 +1,4 @@
-import { TrailTracker } from './trail-tracker';
+import { TrailTracker } from './trails';
 
 describe('TrailTracker', () => {
   it('should create an instance', () => {

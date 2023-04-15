@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TrailTracker } from '../models/trail-tracker';
+import { TrailTracker } from '../models/trails';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
