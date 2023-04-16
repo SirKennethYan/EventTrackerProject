@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TrailTracker } from 'src/app/models/trails';
-import { TrailTrackerService } from 'src/app/services/trail-tracker.service';
+import { Trail } from 'src/app/models/trail';
+import { TrailService } from 'src/app/services/trail.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +8,17 @@ import { TrailTrackerService } from 'src/app/services/trail-tracker.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  trailTracker: TrailTracker[] = [];
+  trailTracker: Trail[] = [];
+  location: any;
 
-  constructor(private trailService: TrailTrackerService) {}
+  constructor(private trailService: TrailService) {}
 
   ngOnInit(): void {
     this.reload();
   }
 
   reload() {
-    this.trailService.index().subscribe({
+    this.trailService.getTrails().subscribe({
       next: (data) => {
         this.trailTracker = data;
       },

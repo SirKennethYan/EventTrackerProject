@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TrailTrackerService } from './trail-tracker.service';
+import { TrailTrackerService } from './trail.service';
 
 describe('TrailTrackerService', () => {
   let service: TrailTrackerService;

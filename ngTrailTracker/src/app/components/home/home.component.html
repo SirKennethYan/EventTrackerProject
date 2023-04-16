@@ -1,5 +1,35 @@
 <h1>Welcome to Trail Tracker!</h1>
 
-<ul>
-  <li *ngFor="let trail of trailTracker">{{ trail.name }}</li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Description</th>
+      <th>Trail Length</th>
+      <th>Elevation Gain</th>
+      <th>Route Type</th>
+      <!-- <th>Date Hiked</th> -->
+      <th>Image URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let trail of trailTracker">
+      <td>{{ trail.name }}</td>
+      <td>{{ trail.location.city }}</td>
+      <td>{{ trail.description }}</td>
+      <td>{{ trail.trailLength }} miles</td>
+      <td>{{ trail.elevationGain }} feet</td>
+      <td>{{ trail.routeType }}</td>
+      <!-- <td>{{ trail.dateHiked | date }}</td> -->
+      <td>
+        <img
+          [src]="trail.imageUrl"
+          [alt]="trail.name"
+          width="100"
+          height="100"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
