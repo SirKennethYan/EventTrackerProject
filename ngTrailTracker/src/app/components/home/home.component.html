@@ -10,7 +10,8 @@
       <th>Elevation Gain</th>
       <th>Route Type</th>
       <!-- <th>Date Hiked</th> -->
-      <th>Image URL</th>
+      <th>Image</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +31,7 @@
           height="100"
         />
       </td>
+      <td><button (click)="deleteTrail(trail.id)">X</button></td>
     </tr>
   </tbody>
 </table>

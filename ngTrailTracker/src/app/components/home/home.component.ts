@@ -27,4 +27,10 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
+  deleteTrail(trailId: number) {
+    this.trailService.destroyTrail(trailId).subscribe(() => {
+      this.reload();
+    });
+  }
 }

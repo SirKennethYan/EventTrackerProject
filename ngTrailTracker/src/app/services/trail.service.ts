@@ -34,7 +34,9 @@ export class TrailService {
   }
 
   createTrail(trail: Trail): Observable<Trail> {
-    return this.http.post<Trail>(this.url, trail).pipe(
+    const locationId = trail.location.id;
+    const newTrail: Trail = { ...trail, location: locationId };
+    return this.http.post<Trail>(this.url, newTrail).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -48,11 +50,6 @@ export class TrailService {
   }
 
   updateTrail(trail: Trail): Observable<Trail> {
-    // if (trail.completed) {
-    //   this.datePipe.transform(Date.now(), 'shortDate');
-    // } else {
-    //   trail.completeDate = '';
-    // }
     return this.http.put<Trail>(this.url + '/' + trail.id, trail).pipe(
       catchError((err: any) => {
         console.log(err);
