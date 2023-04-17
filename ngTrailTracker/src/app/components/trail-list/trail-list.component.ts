@@ -22,6 +22,7 @@ export class TrailListComponent implements OnInit {
   // *ngOnInit() is a lifecycle hook that is called when the component is initialized
   // *loadTrails() is a method that calls the trailService to retrieve all the trails
   // *addTrail() is a method that adds a new trail to the database
+  // *setEditTrail() is a method that sets the editTrail property to a copy of the selected trail
   // *updateTrail() is a method that updates an existing trail in the database
   // *deleteTrail() is a method that deletes an existing trail from the database
   // *reload() is a method that calls the trailService to retrieve all the trails

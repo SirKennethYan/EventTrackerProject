@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.trails.entities.Trail;
+import com.skilldistillery.trails.repositories.LocationRepository;
 import com.skilldistillery.trails.repositories.TrailRepository;
 
 @Service
@@ -14,6 +15,9 @@ public class TrailServiceImpl implements TrailService {
 	
 	@Autowired
 	private TrailRepository trailRepo;
+	
+	@Autowired
+	private LocationRepository localRepo;
 
 	@Override
 	public List<Trail> listAllTrails() {
@@ -27,6 +31,9 @@ public class TrailServiceImpl implements TrailService {
 
 	@Override
 	public Trail create(Trail trail) {
+		if (trail.getLocation() == null) {
+			trail.setLocation(localRepo.getLocationById(1));
+		}
 		return trailRepo.saveAndFlush(trail);
 	}
 
