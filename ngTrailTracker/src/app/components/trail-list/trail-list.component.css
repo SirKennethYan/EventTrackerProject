@@ -1,0 +1,114 @@
+h2 {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.edit-trail-form-row {
+  margin: 25px 150px;
+  font-size: 20px;
+  color: white;
+}
+
+.log-trail-form {
+  background-color: white;
+  font-family: Helvetica;
+  margin: 0px 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+.log-trail-form h2 {
+  margin-top: 0;
+}
+
+.log-trail-form label {
+  display: inline-block;
+  width: 150px;
+}
+
+.log-trail-form input[type="text"],
+.log-trail-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.log-trail-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.log-trail-form button[name="addTrailButton"] {
+  background-color: #458602;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.log-trail-form button[name="addTrailButton"]:hover {
+  background-color: #2b5401;
+}
+
+/*EDIT TRAIL CSS*/
+.edit-trail-form {
+  background-color: white;
+  font-family: Helvetica;
+  margin: 25px 0;
+  font-size: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+.edit-trail-form h2 {
+  margin-top: 0;
+}
+
+.edit-trail-form label {
+  display: inline-block;
+  width: 150px;
+}
+
+.edit-trail-form input[type="text"],
+.edit-trail-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-trail-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.edit-trail-form button[name="updateTrailButton"] {
+  background-color: #458602;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-trail-form button[name="updateTrailButton"]:hover {
+  background-color: #2b5401;
+}

@@ -1,0 +1,28 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1533240332313-0db49b459ad6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aGlraW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60");
+  background-size: 100%;
+  scroll-behavior: smooth;
+
+  box-sizing: border-box;
+}
+
+.app-content {
+  margin: 0 100px;
+}
+
+.container {
+  margin: 0 20px;
+}
+
+.log-trail-form,
+.edit-trail-form {
+  margin: 0 100px;
+}
+
+footer {
+  font-family: Helvetica;
+  text-align: left;
+  background-color: #2b5401;
+  color: #fff;
+  padding: 5px;
+}

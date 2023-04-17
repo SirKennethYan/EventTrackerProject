@@ -1,14 +1,13 @@
 <h2>Log a Trail</h2>
 <div>
-  <form>
+  <form class="log-trail-form">
     <label for="name">Name</label>
     <input type="text" name="name" [(ngModel)]="newTrail.name" /><br />
 
     <label for="description">Description</label>
     <textarea
       name="description"
-      cols="30"
-      rows="10"
+      rows="5"
       [(ngModel)]="newTrail.description"
     ></textarea
     ><br />
@@ -40,12 +39,14 @@
     <label for="img">Image URL</label>
     <input type="text" name="img" [(ngModel)]="newTrail.imageUrl" /><br />
 
-    <button (click)="addTrail(newTrail)">Add Trail</button>
+    <button class="btn btn-primary" (click)="addTrail(newTrail)">
+      Add Trail
+    </button>
   </form>
 </div>
-
+<br />
 <h2>Edit Trail</h2>
-<div>
+<div class="edit-trail-form-row">
   <label for="trailId">Select a Trail ID to edit:</label>
   <select
     name="trailId"
@@ -58,15 +59,14 @@
   </select>
 </div>
 <div *ngIf="editTrail">
-  <form>
+  <form class="log-trail-form">
     <label for="name">Name</label>
     <input type="text" name="name" [(ngModel)]="editTrail.name" /><br />
 
     <label for="description">Description</label>
     <textarea
       name="description"
-      cols="30"
-      rows="10"
+      rows="5"
       [(ngModel)]="editTrail.description"
     ></textarea
     ><br />
@@ -98,6 +98,8 @@
     <label for="img">Image URL</label>
     <input type="text" name="img" [(ngModel)]="editTrail.imageUrl" /><br />
 
-    <button (click)="updateTrail(editTrail)">Update Trail</button>
+    <button class="btn btn-primary" (click)="updateTrail(editTrail)">
+      Update Trail
+    </button>
   </form>
 </div>
